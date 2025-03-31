@@ -153,5 +153,19 @@ if (percapita1 > percapita2){
     printf ("A carta 2 tem maior PIB per Capita. \n");
 }
 
+//Agora vamos verificar qual carta é a vencedora
+cartacencedora1 = (populacao1 + area1 + pib1 + pontoturistico1 + densidadepopulacional1 + percapita1);
+cartacencedora1 = (populacao2 + area2 + pib2 + pontoturistico2 + densidadepopulacional2 + percapita2);
+
+printf (" \n A carta vencedora é: \n");
+
+if (cartacencedora1 > cartavencedora2){
+    printf ("A carta 1 é a vencedora. \n");
+} else{
+    printf ("A carta 2 é a vencedora. /n");
+}
+
+
+
     return 0;
 }
