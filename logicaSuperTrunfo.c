@@ -1,8 +1,10 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 int main() {
 
-//Define as váriaveis da carta 1
+    //Define as váriaveis da carta 1
 char codigodacarta1[5] = "A";
 char estado1[10] = "Pernambuco";
 char nomedacidade1[20] = "Flores";
@@ -13,6 +15,7 @@ int pontoturistico1 = 26;
 float densidadepopulacional1;
 float percapita1;
 char cartacencedora1;
+int jogador1;
 
 //Define as váriaveis da carta 2
 char codigodacarta2[5] = "B";
@@ -25,58 +28,9 @@ int pontoturistico2 = 48;
 float densidadepopulacional2;
 float percapita2;
 char cartavencedora2;
+int jogador2;
 
-//Cadastro da primeira carta
-
-/* printf ("Vamos cadastrar a primeira carta: \n");
-printf ("\n Qual o codigo da carta: \n");
-scanf ("%s", codigodacarta1);
-
-printf ("Qual o estado: \n");
-scanf ("%s", estado1);
-
-printf ("Qual o nome da cidade: \n");
-scanf ("%s", nomedacidade1);
-
-printf ("Qual a população: \n");
-scanf ("%i", &populacao1);
-
-printf ("Qual a área em Km: \n");
-scanf ("%f", &area1);
-
-printf ("Qual o PIB: \n");
-scanf ("%f", &pib1);
-
-printf ("Qual o numero de ponto turistico: \n");
-scanf ("%i", &pontoturistico1);
-
-
-
-
-//Cadastro da segunda carta:
-
-printf ("\n Vamos cadastrar a segunda carta:\n");
-printf ("\n Qual o código da carta: \n");
-scanf ("%s", codigodacarta2);
-
-printf ("Qual o estado: \n");
-scanf ("%s", estado2);
-
-printf ("Qual o nome da cidade: \n");
-scanf ("%s", nomedacidade2);
-
-printf ("Qual a população: \n");
-scanf ("%i", &populacao2);
-
-printf ("Qual a área em Km: \n");
-scanf ("%f", &area2);
-
-printf ("Qual o PIB: \n");
-scanf ("%f", &pib2);
-
-printf ("Qual o ponto turistico: \n");
-scanf ("%i", &pontoturistico2); 
-*/
+srand(time(0));
 
 //Agora vamos calcular a densidade populacional e o PIB per Capita
 
@@ -113,59 +67,94 @@ printf ("Ponto turistico: %i \n", pontoturistico2);
 printf ("Densidade Populacional: %.2f \n", densidadepopulacional2);
 printf ("PIB per Capita: %.2f \n", percapita2);
 
+//Criação de Menu do Jogo
+
+printf ("\n ### Super Trunfo. ### \n");
+printf ("Escolha um Atributo: \n");
+printf ("1. População \n");
+printf ("2. Área em Km \n");
+printf ("3. PIB \n");
+printf ("4. Número de pontos turisticos \n");
+printf ("5. Densidade Populacional \n");
+printf ("Escolha: \n");
+scanf ("%d", &jogador1);
+
+jogador2 = rand () % 3 + 2;
+
+switch (jogador1)
+{
+case 1:
+printf ("Jogador: População - ");
+break;
+case 2:
+printf ("Jogador: Área em Km - ");
+break;
+case 3:
+printf ("Jogador: PIB - ");
+break;
+case 4:
+printf ("Jogador: Número de pontos turistico - ");
+break;
+case 5:
+printf ("Jogador: Densidade populacional - ");
+break;
+default:
+printf ("Opção inválida. \n");
+break;
+}
+
+switch (jogador2)
+{
+case 1:
+printf ("Computador: População \n");
+break;
+case 2:
+printf ("Computador: Área em Km \n");
+break;
+case 3:
+printf ("Computador: PIB \n");
+break;
+case 4:
+printf ("Computador: Número de pontos turistico \n");
+break;
+case 5:
+printf ("Computador: Densidade populacional \n");
+break;
+}
+
 //Agora vamos comparar as duas cartas
 
 printf ("\n Vamos comparar as duas cartas: \n");
 
-if (populacao1 > populacao2){
-    printf ("A carta 1 tem maior população. \n");
+if (jogador1 == jogador2)
+{
+    printf ("### Jogo Empatou! ### \n");
+} else if ((jogador1 == 1) && (jogador2 == 2) || (jogador1 == 2) && (jogador2 == 3) ||
+           (jogador1 == 3) && (jogador2 == 4) || (jogador1 == 5) && (jogador2 == 1))
+{
+    printf ("### Parabéns, você ganhou! ### \n");
 } else{
-    printf ("A carta 2 tem maior população. \n");
-}
-
-if (area1 > area2){
-    printf ("A carta 1 tem maior área em Km. \n");
-} else{
-    printf ("A carta 2 tem maior área em Km. \n");
-}
-
-if (pib1 > pib2){
-    printf ("A carta 1 tem o PIB maior. \n");
-} else{
-    printf ("A carta 2 tem o PIB maior. \n");
-}
-
-if (pontoturistico1 > pontoturistico2){
-    printf ("A carta 1 tem pontos turisticos maior. \n");
-} else{
-    printf ("A carta 2 tem pontos turisticos maior. \n");
-}
-
-if (densidadepopulacional1 < densidadepopulacional2){
-    printf ("A carta 1 tem menor densidade populacional. \n");
-} else{
-    printf ("A carta 2 tem menor densidade populacional. \n");
-}
-
-if (percapita1 > percapita2){
-    printf ("A carta 1 tem maior PIB per Capita. \n");
-} else{
-    printf ("A carta 2 tem maior PIB per Capita. \n");
+    printf ("### Você perdeu! ### \n");
 }
 
 //Agora vamos verificar qual carta é a vencedora
+
 cartacencedora1 = (populacao1 + area1 + pib1 + pontoturistico1 + densidadepopulacional1 + percapita1);
 cartacencedora1 = (populacao2 + area2 + pib2 + pontoturistico2 + densidadepopulacional2 + percapita2);
 
 printf (" \n A carta vencedora é: \n");
 
-if (cartacencedora1 > cartavencedora2){
-    printf ("A carta 1 é a vencedora. \n");
+if (cartacencedora1 == cartavencedora2)
+{
+    printf ("### Jogo Empatou! ### \n");
+} else if (cartacencedora1 > cartavencedora2)
+{
+    printf ("### A carta A é a vencedora! ### \n");
 } else{
-    printf ("A carta 2 é a vencedora. /n");
+    printf ("### A carta B é a vencedora! ### \n");
 }
 
 
 
-    return 0;
+return 0;
 }
